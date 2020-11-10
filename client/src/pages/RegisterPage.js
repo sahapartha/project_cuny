@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import auth from '../services/auth';
 
-class LoginPage extends React.Component {
+class RegisterPage extends React.Component {
   state = {
     redirectToReferrer: false,
     failed: false, 
@@ -61,10 +61,24 @@ class LoginPage extends React.Component {
             placeholder="Password" 
             value={this.state.password} 
             onChange={this.fieldChanged('password')} />
-          <button 
-            type="submit"
-            className="btn btn-primary ml-auto"
-          >Login</button>
+             <input 
+            type="First Name"
+            className="form-control"
+            name="firstname"
+            placeholder="FirstName" 
+            value={this.state.password} 
+            onChange={this.fieldChanged('password')} />
+         
+         <input 
+            type="Last Name"
+            className="form-control"
+            name="lastname"
+            placeholder="LastName" 
+            value={this.state.password} 
+            onChange={this.fieldChanged('password')} />
+        
+         
+         
            <button 
             type="submit"
             className="btn btn-primary ml-auto"
@@ -75,4 +89,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default RegisterPage;
