@@ -13,6 +13,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import AuthButton from './components/AuthButton';
+import RegisterPage from './pages/RegisterPage';
 
 import './App.css';
 
@@ -31,6 +32,11 @@ function Navigation(props) {
           <NavLink className="nav-link" exact to="/about-us">
             About Us
           </NavLink>
+          <li className="nav-item">
+          <NavLink className="nav-link" exact to="/registerpage">
+           Register
+          </NavLink>
+        </li>
         </li>
       </ul>
       <AuthButton />
@@ -51,6 +57,7 @@ class App extends React.Component {
                 <PrivateRoute path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/registerpage" component={RegisterPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             </div>
