@@ -1,52 +1,63 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+const bcrypt = require('bcryptjs');
 
-import auth from '../services/auth';
 
 class RegisterPage extends React.Component {
-  state = {
-    redirectToReferrer: false,
-    failed: false, 
-    email: "",
-    password: "",
-  }
-
-  fieldChanged = (name) => {
-    return (event) => {
-      let { value } = event.target;
-      this.setState({ [name]: value });
-    }
-  }
-
-  login = (e) => {
-    e.preventDefault();
-    let { email, password } = this.state;
-    auth.authenticate(email, password)
-      .then((user) => {
-        this.setState({ redirectToReferrer: true });
-      })
-      .catch((err) => {
-        this.setState({ failed: true });
-      });
-  }
-
-  render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { redirectToReferrer, failed } = this.state;
-
-    if (redirectToReferrer) {
-      return <Redirect to={from} />;
-    }
-
-    let err = "";
-    if (failed) {
-      err = <div className="alert alert-danger" role="alert">Login Failed</div>;
-    }
+    state = {
+        error: false,
+        success: false,
+        email: '',
+        password:'',
+        firstname:'',
+        lastname:'',
+      }
+    UserInput = (event) => {
+        fetch("/api/users/", {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({email: this.state.email}, {password: this.state.password}, {firstname: this.state.firstname}, {lastname: this.state.lastname}),
+          
+        })
+          .then(res => {
+            if(res.ok) {
+              return res.json()
+            }
+    
+            throw new Error('Content validation');
+          })
+          .then(post => {
+            this.setState({
+              success: true,
+            });
+          })
+          .catch(err => {
+            this.setState({
+              error: true,
+            });
+          });
+      }
+    
+      render() {
+        if(this.state.success) return <Redirect to="/" />;
+    
+        let errorMessage = null;
+        if(this.state.error) {
+          errorMessage = (
+            <div className="alert alert-danger">
+              "There was an error during registration."
+            </div>
+          );
+        }
 
     return (
+
       <form onSubmit={this.login}>
-        <div className="form-row">
-          { err }
+          <div className="input-group">
+        { errorMessage }
           <input 
             type="email"
             className="form-control"
@@ -59,30 +70,27 @@ class RegisterPage extends React.Component {
             className="form-control"
             name="password"
             placeholder="Password" 
-            value={this.state.password} 
+            value={bcrypt.hashSync(this.state.password, 10)} 
             onChange={this.fieldChanged('password')} />
              <input 
             type="First Name"
             className="form-control"
             name="firstname"
             placeholder="FirstName" 
-            value={this.state.password} 
-            onChange={this.fieldChanged('password')} />
+            value={this.state.firstname} 
+            onChange={this.fieldChanged('firstname')} />
          
          <input 
             type="Last Name"
             className="form-control"
             name="lastname"
             placeholder="LastName" 
-            value={this.state.password} 
-            onChange={this.fieldChanged('password')} />
+            value={this.state.lastname} 
+            onChange={this.fieldChanged('lastname')} />
         
          
          
-           <button 
-            type="submit"
-            className="btn btn-primary ml-auto"
-          >Register</button>
+        <button className="btn btn-primary" onClick={this.UserInput}>Register</button>
         </div>
       </form>
     );
