@@ -16,11 +16,13 @@ import Map from './pages/Map';
 import Mountain from './pages/Mountain';
 import Waterfalls from './pages/Waterfalls';
 import Parks from './pages/Parks';
+import PlaceWidget from './pages/PlaceWidget';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import AuthButton from './components/AuthButton';
 // From react bootstrap
 import Dropdown  from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //test
 // import Dropdown from 'react-dropdown';
@@ -51,35 +53,54 @@ function Navigation(props) {
         {/* this navbar is to use map/google api */}
         <li className="nav-iteam">
           <NavLink className="nav-link" exact to="/Search-place">
-          <input type="text" className ="header_searchInput"/> 
-            Search
+            Map
+          </NavLink>      
+        </li>
+        <li className="nav-iteam">
+          <NavLink className="nav-link" exact to="/PlaceWidget">
+            Place Widget
           </NavLink>      
         </li>
         {/* here is to use for drop menu for different pages.  */}
         <li>
-         <NavLink className="nav-link" exact to="/Place-Wizard">
+         {/* <NavLink className="nav-link" exact to="/Place-Wizard"> */}
          <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Place Wizard
+              select
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-            <Dropdown.Item exact to="/Parks">Parks</Dropdown.Item>
-            <Dropdown.Item exact to="/Mountain">Mountain</Dropdown.Item>
-            <Dropdown.Item exact to="/Waterfalls">Waterfalls</Dropdown.Item>
+            
+            <Dropdown.Item> <NavLink className="nav-link" exact to="/Parks"> Parks </NavLink>
+            </Dropdown.Item>
+            
+            
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Mountain"> Mountain </NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Beaches</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Hidden Gems</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Hiking</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
+            </Dropdown.Item>
+
             </Dropdown.Menu>
           </Dropdown>
-         </NavLink>
-        </li>
-        {/* end of drop menu */}
-        {/* <li className="nav-iteam">
-          <NavLink className="nav-link" exact to="/Option">
-            
-            <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />;
-            
-          </NavLink>      
-        </li> */}
+          </li>
       </ul>
+
       <AuthButton />
     </nav>
   );
@@ -102,6 +123,7 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/Search-Place" component={Map} />
                 <Route path="/Mountain" component={Mountain} />
+                <Route path="/PlaceWidget" component={PlaceWidget} />
                 <Route path="/Waterfalls" component={Waterfalls} />
                 <Route path="/Parks" component={Parks} />
                 {/* <Route path="/Option" component={Option} /> */}

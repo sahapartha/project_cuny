@@ -1,6 +1,9 @@
 import React from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+
+
  
+
 const containerStyle = {
   width: '400px',
   height: '400px'
@@ -26,7 +29,7 @@ function MyComponent() {
  
   return (
     <LoadScript
-      googleMapsApiKey="YOUR_API_KEY"
+      googleMapsApiKey="AIzaSyD2JmLST6GsVUcPM8sL9wAAhkJUTQOYbho"
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
