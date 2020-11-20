@@ -10,9 +10,11 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import AuthButton from './components/AuthButton';
+
 
 import './App.css';
 
@@ -30,6 +32,11 @@ function Navigation(props) {
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About Us
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/register">
+            Register
           </NavLink>
         </li>
       </ul>
@@ -51,7 +58,8 @@ class App extends React.Component {
                 <PrivateRoute path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
+                <Route path="/register" component={RegisterPage} />
+     
               </Switch>
             </div>
           </div>
