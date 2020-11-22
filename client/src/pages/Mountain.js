@@ -1,10 +1,9 @@
 import React from 'react';
 
-function AboutUsPage(props) {
+function Mountain(props) {
   return (
-    
     <div>A little info about us.</div>
   );
 }
 
-export default AboutUsPage;
+export default Mountain;
