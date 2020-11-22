@@ -1,26 +1,46 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-const bcrypt = require('bcryptjs');
 
 
 class RegisterPage extends React.Component {
     state = {
-        error: false,
-        success: false,
+      error: false,
+       success: false,
         email: '',
         password:'',
-        firstname:'',
-        lastname:'',
+        firstName:'',
+        lastName:'',
       }
-    UserInput = (event) => {
-        fetch("/api/users/", {
+      firstChanged = (event) => {
+        this.setState({
+          firstName: event.target.value,
+        });
+      }
+       lastChanged = (event) => {
+          this.setState({
+            lastName: event.target.value,
+          });
+        }
+          emailChanged = (event) => {
+            this.setState({
+              email: event.target.value,
+            });
+          }
+            passChanged = (event) => {
+              this.setState({
+                password: event.target.value,
+              });
+            }
+            
+      saveUser = (event) => {
+        event.preventDefault();
+        fetch("/api/auth/signup", {
           method: 'POST',
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({email: this.state.email}, {password: this.state.password}, {firstname: this.state.firstname}, {lastname: this.state.lastname}),
-          
+          body: JSON.stringify({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.password}),
         })
           .then(res => {
             if(res.ok) {
@@ -40,7 +60,8 @@ class RegisterPage extends React.Component {
             });
           });
       }
-    
+            
+            
       render() {
         if(this.state.success) return <Redirect to="/" />;
     
@@ -55,46 +76,46 @@ class RegisterPage extends React.Component {
 
     return (
 
-      <form onSubmit={this.login}>
+      <form>
           <div className="input-group">
         { errorMessage }
-          <input 
-            type="email"
-            className="form-control"
-            name="email"
-            placeholder="Email" 
-            value={this.state.email} 
-            onChange={this.fieldChanged('email')} />
-          <input 
-            type="password"
-            className="form-control"
-            name="password"
-            placeholder="Password" 
-            value={bcrypt.hashSync(this.state.password, 10)} 
-            onChange={this.fieldChanged('password')} />
+     
              <input 
             type="First Name"
             className="form-control"
-            name="firstname"
+            name="firstName"
             placeholder="FirstName" 
-            value={this.state.firstname} 
-            onChange={this.fieldChanged('firstname')} />
-         
+            value={this.state.firstName} 
+            onChange={this.firstChanged} />
          <input 
             type="Last Name"
             className="form-control"
             name="lastname"
             placeholder="LastName" 
-            value={this.state.lastname} 
-            onChange={this.fieldChanged('lastname')} />
-        
+            value={this.state.lastName} 
+            onChange={this.lastChanged} />
+             <input 
+            type="email"
+            className="form-control"
+            name="email"
+            placeholder="Email" 
+            value={this.state.email} 
+            onChange={this.emailChanged} />
+          <input 
+            type="password"
+            className="form-control"
+            name="password"
+            placeholder="Password" 
+            value={this.state.password} 
+            onChange={this.passChanged} />
          
          
-        <button className="btn btn-primary" onClick={this.UserInput}>Register</button>
+        <button className="btn btn-primary" onClick={this.saveUser}>Register</button>
         </div>
       </form>
     );
   }
+
 }
 
 export default RegisterPage;
