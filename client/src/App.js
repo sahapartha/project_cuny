@@ -14,7 +14,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import AuthButton from './components/AuthButton';
-import RegisterPage from './pages/RegisterPage';
+
 
 
 import './App.css';
@@ -40,11 +40,6 @@ function Navigation(props) {
           </NavLink>
         </li>
         </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/register">
-            Register
-          </NavLink>
-        </li>
       </ul>
       <AuthButton />
     </nav>
@@ -66,9 +61,6 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/registerpage" component={RegisterPage} />
                 <Route path="/" component={PostsListPage} />
-                <Route path="/register" component={RegisterPage} />
-     
-
               </Switch>
             </div>
           </div>

@@ -9,7 +9,7 @@
   "test": {
     "username": "ctp_user",
     "password": "ctp_pass",
-    "database": "app2019_development",
+    "database": "app2019_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
