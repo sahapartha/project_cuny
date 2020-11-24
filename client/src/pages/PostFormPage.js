@@ -1,27 +1,77 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
+
 class PostFormPage extends React.Component {
   state = {
     error: false,
     success: false,
-    content: '',
+    nameoftheplace: '',
+    description:'',
+    rateplace:'',
+    street:'',
+    city:'',
+    state:'',
+    zipcode:'',
+    category:'',
+    parking:'',
   }
 
-  contentChanged = (event) => {
+  nameoftheplaceChanged = (event) => {
     this.setState({
-      content: event.target.value
+      nameoftheplace: event.target.value
+    });
+  }
+  descriptionChanged = (event) => {
+    this.setState({
+      description: event.target.value
+    });
+  }
+  rateplaceChanged = (event) => {
+    this.setState({
+      rateplace: event.target.value
+    });
+  }
+  streetChanged = (event) => {
+    this.setState({
+      street: event.target.value
+    });
+  }
+  cityChanged = (event) => {
+    this.setState({
+      city: event.target.value
+    });
+  }
+  stateChanged = (event) => {
+    this.setState({
+      state: event.target.value
+    });
+  }
+  zipcodeChanged = (event) => {
+    this.setState({
+      zipcode: event.target.value
+    });
+  }
+  categoryChanged = (event) => {
+    this.setState({
+      category: event.target.value
+    });
+  }
+  parkingChanged = (event) => {
+    this.setState({
+      parking: event.target.value
     });
   }
 
   savePost = (event) => {
+    event.preventDefault();
     fetch("/api/posts/", {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({content: this.state.content}),
+      body: JSON.stringify({nameoftheplace: this.state.nameoftheplace, description:this.state.description, rateplace:this.state.rateplace, street:this.state.street, city:this.state.city ,state:this.state.state, zipcode:this.state.zipcode, category:this.state.category, parking:this.state.parking}),
     })
       .then(res => {
         if(res.ok) {
@@ -58,13 +108,79 @@ class PostFormPage extends React.Component {
       <div className="col-10 col-md-8 col-lg-7">
         { errorMessage }
         <div className="input-group">
+          <label>Name Of Place</label> 
           <input 
             type="text" 
-            placeholder="Add your words of wisdom here..." 
-            value={this.state.content}
+            value={this.state.nameoftheplace}
             className="form-control mr-3 rounded"
-            onChange={this.contentChanged}
+            onChange={this.nameoftheplaceChanged}
           />
+          <label>Description</label> 
+          <input 
+            type="text" 
+            value={this.state.description}
+            className="form-control mr-3 rounded"
+            onChange={this.descriptionChanged}
+          />
+           <label>Rate</label> 
+           
+
+          <input 
+            type="text" 
+          
+            value={this.state.rateplace}
+           
+            className="form-control mr-3 rounded"
+            onChange={this.rateplaceChanged}
+            
+          />
+           <label>Street</label> 
+          <input 
+            type="text" 
+            value={this.state.street}
+            className="form-control mr-3 rounded"
+            onChange={this.streetChanged}
+          />
+            <label>City</label> 
+          <input 
+            type="text" 
+            value={this.state.city}
+            className="form-control mr-3 rounded"
+            onChange={this.cityChanged}
+          />
+            <label>State</label> 
+          <input 
+            type="text" 
+            value={this.state.state}
+            className="form-control mr-3 rounded"
+            onChange={this.stateChanged}
+          />
+            <label>Zipcode</label> 
+          <input 
+            type="text" 
+            value={this.state.zipcode}
+            className="form-control mr-3 rounded"
+            onChange={this.zipcodeChanged}
+          />
+            <label>Category</label> 
+          <input 
+            type="text" 
+            value={this.state.category}
+            className="form-control mr-3 rounded"
+            onChange={this.categoryChanged}
+          />
+            <label>Parking</label> 
+          <input 
+            type="text" 
+            value={this.state.parking}
+            className="form-control mr-3 rounded"
+            onChange={this.parkingChanged}
+          />
+          <form action="/profile" method="post" enctype="multipart/form-data">
+  <input type="file" name="mainpicture" />
+                 </form>
+          
+
           <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
         </div>
       </div>

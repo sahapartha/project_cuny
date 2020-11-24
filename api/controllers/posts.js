@@ -26,9 +26,9 @@ router.get('/', (req,res) => {
 router.post('/',
   passport.isAuthenticated(),
   (req, res) => {
-    let { content } = req.body;
-    
-    Post.create({ content })
+    let { nameoftheplace, description, rateplace, street, city, state, zipcode, category, parking } = req.body;
+   
+    Post.create({ nameoftheplace, description, rateplace, street, city, state, zipcode, category, parking, username:String(req.user)})
       .then(post => {
         res.status(201).json(post);
       })
@@ -62,7 +62,7 @@ router.put('/:id',
           return res.sendStatus(404);
         }
 
-        post.content = req.body.content;
+        post.content = req.body.content;// I would specify it here fo ecah insid emethod
         post.save()
           .then(post => {
             res.json(post);
