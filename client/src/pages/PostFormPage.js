@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-
 class PostFormPage extends React.Component {
   state = {
     error: false,
@@ -15,6 +14,7 @@ class PostFormPage extends React.Component {
     zipcode:'',
     category:'',
     parking:'',
+    mainpicture:'',
   }
 
   nameoftheplaceChanged = (event) => {
@@ -62,16 +62,35 @@ class PostFormPage extends React.Component {
       parking: event.target.value
     });
   }
+  onFileChange = (event) =>  {
+    this.setState({ 
+      mainpicture: event.target.files[0] })
+}
 
   savePost = (event) => {
     event.preventDefault();
+    
+    const data = new FormData();
+    
+    data.append('mainpicture', this.state.mainpicture);
+    data.append('nameoftheplace', this.state.nameoftheplace);
+    data.append('description', this.state.description);
+    data.append('rateplace', this.state.rateplace);
+    data.append('street', this.state.street);
+    data.append('city', this.state.city);
+    data.append('state', this.state.state);
+    data.append('zipcode', this.state.zipcode);
+    data.append('category', this.state.category);
+    data.append('parking',this.state.parking);
     fetch("/api/posts/", {
       method: 'POST',
       credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
+
       },
-      body: JSON.stringify({nameoftheplace: this.state.nameoftheplace, description:this.state.description, rateplace:this.state.rateplace, street:this.state.street, city:this.state.city ,state:this.state.state, zipcode:this.state.zipcode, category:this.state.category, parking:this.state.parking}),
+      
+      body: data, 
+     // body: JSON.stringify({nameoftheplace: this.state.nameoftheplace, description:this.state.description, rateplace:this.state.rateplace, street:this.state.street, city:this.state.city ,state:this.state.state, zipcode:this.state.zipcode, category:this.state.category, parking:this.state.parking}),
     })
       .then(res => {
         if(res.ok) {
@@ -176,9 +195,12 @@ class PostFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.parkingChanged}
           />
-          <form action="/profile" method="post" enctype="multipart/form-data">
-  <input type="file" name="mainpicture" />
-                 </form>
+          <label>Picture</label> 
+            <input type="file" name="mainpicture" 
+             //value={this.state.mainpicture}
+             className="form-control mr-3 rounded"
+             onChange={this.onFileChange}/>
+            
           
 
           <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
