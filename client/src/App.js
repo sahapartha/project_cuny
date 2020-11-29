@@ -16,6 +16,7 @@ import Map from './pages/Map';
 import Mountain from './pages/Mountain';
 import Waterfalls from './pages/Waterfalls';
 import Parks from './pages/Parks';
+import Hike from './pages/Hike';
 import PlaceWidget from './pages/PlaceWidget';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
@@ -52,7 +53,7 @@ function Navigation(props) {
         </li>
         {/* this navbar is to use map/google api */}
         <li className="nav-iteam">
-          <NavLink className="nav-link" exact to="/Search-place">
+          <NavLink className="nav-link" exact to="/Map">
             Map
           </NavLink>      
         </li>
@@ -81,20 +82,18 @@ function Navigation(props) {
             <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
             </Dropdown.Item>
 
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Beaches</NavLink>
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Beaches"> Beaches</NavLink>
             </Dropdown.Item>
 
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Hidden Gems</NavLink>
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hidden"> Hidden Gems</NavLink>
             </Dropdown.Item>
 
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Hiking</NavLink>
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hike"> Hike</NavLink>
             </Dropdown.Item>
 
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Parks"> Parks</NavLink>
             </Dropdown.Item>
 
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
-            </Dropdown.Item>
 
             </Dropdown.Menu>
           </Dropdown>
@@ -106,14 +105,34 @@ function Navigation(props) {
   );
 }
 
+function calling_map(props){
+  return(
+    <div class ="map">
+      <Map
+     google={props.google}
+     center={{lat: 40.7291206, lng: -73.78632
+     }}
+     height='300px'
+     width= '300px'
+     zoom={15}
+    />
+    </div>
+    
+  );
+  
+}
+
 
 
 
 class App extends React.Component {
   render() {
     return (
+      <div>
+        
         <Router>
           <Navigation />
+          
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
@@ -121,19 +140,22 @@ class App extends React.Component {
                 <PrivateRoute path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/Search-Place" component={Map} />
+                <Route path="/Map" component={calling_map} />
                 <Route path="/Mountain" component={Mountain} />
                 <Route path="/PlaceWidget" component={PlaceWidget} />
                 <Route path="/Waterfalls" component={Waterfalls} />
                 <Route path="/Parks" component={Parks} />
+                <Route path="/Hike" component={Hike} />
                 {/* <Route path="/Option" component={Option} /> */}
 
       
                 <Route path="/" component={PostsListPage} />
+
               </Switch>
             </div>
           </div>
         </Router>
+        </div>
     );
   }
 }
