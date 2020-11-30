@@ -14,18 +14,17 @@ module.exports = (sequelize, DataTypes) => {
        gallery:{ type: DataTypes.STRING},
        description:{ type: DataTypes.STRING,
          validate: {
-        len: [3, 250],
+        len: [3, 125],
         notEmpty: true,
+        
         }
         },
      rateplace:{ type: DataTypes.STRING},
      street:{ type: DataTypes.STRING},
      city:{ type: DataTypes.STRING},
      state:{ type: DataTypes.STRING},
-     zipcode:{ type: DataTypes.STRING},
+     zipcode:{ type: DataTypes.INTEGER},
      category:{ type: DataTypes.STRING},
-     parking:{ type: DataTypes.STRING},
-     state:{ type: DataTypes.INTEGER},
      parking:{ type: DataTypes.STRING},
      username:{ type: DataTypes.STRING},
    
