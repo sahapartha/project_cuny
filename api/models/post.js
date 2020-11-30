@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
        gallery:{ type: DataTypes.STRING},
        description:{ type: DataTypes.STRING,
          validate: {
-        len: [3, 250],
+        len: [3, 125],
         notEmpty: true,
         
         }

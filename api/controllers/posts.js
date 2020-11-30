@@ -7,7 +7,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, 'uploads/img')
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + '.jpg')
@@ -47,16 +47,22 @@ router.get('/', (req,res) => {
   Post.findAll({})
     .then(posts => res.json(posts));
 
+});/*
+router.get('/city', (req,res) => {
+  const {c} = req.params
+  Post.findAll({ where: { city: c }})
+    .then(posts => res.json(posts));
+
 });
 
-
+*/
 router.post('/',
   passport.isAuthenticated(),
   upload,
   (req, res) => {
     let { nameoftheplace, description, rateplace, street, city, state, zipcode, category, parking } = req.body;
    
-    Post.create({ nameoftheplace, mainpicture:req.file.path, description, rateplace, street, city, state, zipcode, category, parking, username:String(req.user.email)})
+    Post.create({ nameoftheplace, mainpicture:"/"+req.file.path, description, rateplace, street, city, state, zipcode, category, parking, username:String(req.user.email)})
       .then(post => {
         res.status(201).json(post);
       })

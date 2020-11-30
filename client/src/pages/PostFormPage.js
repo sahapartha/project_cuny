@@ -81,7 +81,7 @@ class PostFormPage extends React.Component {
     data.append('state', this.state.state);
     data.append('zipcode', this.state.zipcode);
     data.append('category', this.state.category);
-    data.append('parking',this.state.parking);
+    data.append('parking', this.state.parking);
     fetch("/api/posts/", {
       method: 'POST',
       credentials: 'include',
@@ -131,14 +131,14 @@ class PostFormPage extends React.Component {
           <input 
             type="text" 
             value={this.state.nameoftheplace}
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.nameoftheplaceChanged}
           />
           <label>Description</label> 
           <input 
             type="text" 
             value={this.state.description}
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.descriptionChanged}
           />
            <label>Rate</label> 
@@ -149,7 +149,7 @@ class PostFormPage extends React.Component {
           
             value={this.state.rateplace}
            
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.rateplaceChanged}
             
           />
@@ -157,48 +157,48 @@ class PostFormPage extends React.Component {
           <input 
             type="text" 
             value={this.state.street}
-            className="form-control mr-3 rounded"
+          //  className="form-control mr-3 rounded"
             onChange={this.streetChanged}
           />
             <label>City</label> 
           <input 
             type="text" 
             value={this.state.city}
-            className="form-control mr-3 rounded"
+          //  className="form-control mr-3 rounded"
             onChange={this.cityChanged}
           />
             <label>State</label> 
           <input 
             type="text" 
             value={this.state.state}
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.stateChanged}
           />
             <label>Zipcode</label> 
           <input 
             type="text" 
             value={this.state.zipcode}
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.zipcodeChanged}
           />
             <label>Category</label> 
           <input 
             type="text" 
             value={this.state.category}
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.categoryChanged}
           />
             <label>Parking</label> 
           <input 
             type="text" 
             value={this.state.parking}
-            className="form-control mr-3 rounded"
+           // className="form-control mr-3 rounded"
             onChange={this.parkingChanged}
           />
           <label>Picture</label> 
             <input type="file" name="mainpicture" 
              //value={this.state.mainpicture}
-             className="form-control mr-3 rounded"
+            // className="form-control mr-3 rounded"
              onChange={this.onFileChange}/>
             
           

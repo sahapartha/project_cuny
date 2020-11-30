@@ -16,7 +16,9 @@ class PostsListPage extends React.Component {
       .then(posts => { 
         this.setState({
           loading: false,
-          posts: posts.map((p,ii) => <Post {...p} key={ii} />),
+          posts: posts.map((p,ii) => <Post {...p} key={ii} />
+         
+          ),
         
         });
       })
