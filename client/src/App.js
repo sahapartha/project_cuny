@@ -22,13 +22,18 @@ import AuthButton from "./components/AuthButton";
 // From react bootstrap
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {TabNavigation,Tab} from "evergreen-ui"
-
-
+// import {TabNavigation,Tab} from "evergreen-ui"
 import "./App.css";
+//material-ui
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 
 function Navigation(props) {
   return (
+    
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <ul className="navbar-nav mr-auto">
         <Link className="navbar-brand" to="/">
@@ -116,14 +121,40 @@ function Navigation(props) {
       </ul>
       <AuthButton />
     </nav>
+    
   );
+}
+
+function CenteredTabs(){
+return(
+  <div>
+      
+      <Tabs 
+      value={0} indicatorColor="primary"
+        textColor="primary">
+        <Tab label="Tour Gram"  href="/about-us" />
+        <Tab label="Post Your Place" />
+        <Tab label="Register" />
+        <Tab label="Map" />
+        <Tab label="About Us" />
+        
+        
+      </Tabs>
+      
+      
+  </div>
+);
+
 }
 
 class App extends React.Component {
   render() {
     return (
       <Router>
-        <Navigation />
+        <CenteredTabs/>
+        <div><br/><Navigation /></div>
+        
+        
         <div className="container-fluid text-center">
           <div className="row justify-content-center">
             <Switch>
