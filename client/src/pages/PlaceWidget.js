@@ -50,7 +50,7 @@ class PlaceWidget extends React.Component {
       />
        Search your Place 
       </div>
-      <div>
+      <div class="button">
       <>
         <Button variant="primary" onClick={this.onSubmit}> Parks</Button>{' '}
         <Button variant="secondary">Beaches</Button>{' '}

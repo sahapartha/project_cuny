@@ -17,6 +17,8 @@ import Mountain from './pages/Mountain';
 import Waterfalls from './pages/Waterfalls';
 import Parks from './pages/Parks';
 import Hike from './pages/Hike';
+import Beach from './pages/Beach';
+import Hidden from './pages/Hidden';
 import PlaceWidget from './pages/PlaceWidget';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
@@ -82,7 +84,7 @@ function Navigation(props) {
             <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
             </Dropdown.Item>
 
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Beaches"> Beaches</NavLink>
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Beach"> Beach </NavLink>
             </Dropdown.Item>
 
             <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hidden"> Hidden Gems</NavLink>
@@ -146,6 +148,8 @@ class App extends React.Component {
                 <Route path="/Waterfalls" component={Waterfalls} />
                 <Route path="/Parks" component={Parks} />
                 <Route path="/Hike" component={Hike} />
+                <Route path="/Beach" component={Beach} />
+                <Route path="/Hidden" component={Hidden} />
                 {/* <Route path="/Option" component={Option} /> */}
 
       
