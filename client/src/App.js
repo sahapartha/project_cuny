@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
   NavLink
 } from 'react-router-dom';
@@ -10,10 +10,12 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import AuthButton from './components/AuthButton';
 import RegisterPage from './pages/RegisterPage';
+
 
 import './App.css';
 
@@ -38,6 +40,11 @@ function Navigation(props) {
           </NavLink>
         </li>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/register">
+            Register
+          </NavLink>
+        </li>
       </ul>
       <AuthButton />
     </nav>
@@ -56,9 +63,9 @@ class App extends React.Component {
                 <Route path="/login" component={LoginPage} />
                 <PrivateRoute path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/registerpage" component={RegisterPage} />
                 <Route path="/" component={PostsListPage} />
+                <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/register" component={RegisterPage} />
               </Switch>
             </div>
           </div>

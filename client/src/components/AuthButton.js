@@ -16,7 +16,9 @@ const AuthButton = withRouter(({ history }) => {
 
   return (
     <div>
-      Welcome!
+      <p className="text-white bg-dark">  Welcome! </p>
+    
+ 
       <button className={classes} onClick={logout}>Logout</button>
     </div>
   );
