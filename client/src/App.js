@@ -42,8 +42,8 @@ const { Header, Content, Footer } = Layout;
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-        1st menu item
+      <a rel="noopener noreferrer" href="/posts">
+        Wonderfull Places
       </a>
     </Menu.Item>
     <Menu.Item>
@@ -62,7 +62,7 @@ const menu = (
 
 function Navigation(props) {
   return (
-    <Layout className="layout shadow mb-3" style={{ marginBottom: "20px" }}>
+    <Layout className="layout shadow mb-1" style={{ marginBottom: "20px" }}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
@@ -80,12 +80,13 @@ function Navigation(props) {
           </Menu.Item>
           <Menu.Item key="6">
             <Dropdown overlay={menu}>
-              <a
+              <a 
                 className="ant-dropdown-link"
                 onClick={(e) => e.preventDefault()}
               >
                <CarOutlined />
-               Places <DownOutlined />
+              Places
+             <DownOutlined />
               </a>
             </Dropdown>
             {/* <NavLink exact to="/register">
@@ -99,7 +100,7 @@ function Navigation(props) {
               About Us
             </NavLink>
           </Menu.Item>
-          <div style={{ float: "right" }}>
+          <div style={{ float: "right",}}>
             <AuthButton />
           </div>
         </Menu>
