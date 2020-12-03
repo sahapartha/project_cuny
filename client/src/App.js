@@ -28,6 +28,20 @@ import {
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { Typography, Button } from "antd";
+// from alamin
+
+import Map from './pages/Map';
+import Mountain from './pages/Mountain';
+import Waterfalls from './pages/Waterfalls';
+import Parks from './pages/Parks';
+import Hike from './pages/Hike';
+import Beach from './pages/Beach';
+import Hidden from './pages/Hidden';
+import PlaceWidget from './pages/PlaceWidget';
+import Dropdown  from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
 
 const { Text, Title } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -62,11 +76,80 @@ function Navigation(props) {
               Login/Register
             </NavLink>
           </Menu.Item>
+
+{/* From alamin  */}
+
+          <Menu.Item key="4">
+            <NavLink exact to="/Map">
+              <TeamOutlined />
+              Map
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="5">
+            <NavLink exact to="/PlaceWidget">
+              <TeamOutlined />
+              PlaceWidget
+            </NavLink>
+          </Menu.Item>
+          
+          <Menu.Item>
+          <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+              select
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+            
+            <Menu.Item key="6"><Dropdown.Item> <NavLink className="nav-link" exact to="/Parks"> Parks </NavLink>
+            </Dropdown.Item>
+             </Menu.Item>
+            
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Mountain"> Mountain </NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Beach"> Beach </NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hidden"> Hidden Gems</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hike"> Hike</NavLink>
+            </Dropdown.Item>
+
+            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Parks"> Parks</NavLink>
+            </Dropdown.Item>
+
+
+            </Dropdown.Menu>
+          </Dropdown>
+          </Menu.Item>
         </Menu>
       </Header>
     </Layout>
   );
 }
+
+function calling_map(props){
+  return(
+    <div class ="map">
+      <Map
+     google={props.google}
+     center={{lat: 40.7291206, lng: -73.78632
+     }}
+     height='300px'
+     width= '300px'
+     zoom={15}
+    />
+    </div>
+    
+  );
+  
+}
+
+
 
 class App extends React.Component {
   render() {
@@ -82,6 +165,17 @@ class App extends React.Component {
               <Route exact path="/" component={PostsListPage} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/register" component={RegisterPage} />
+
+              {/* From alamin  */}
+              
+              <Route path="/Map" component={calling_map} />
+              <Route path="/Mountain" component={Mountain} />
+              <Route path="/PlaceWidget" component={PlaceWidget} />
+              <Route path="/Waterfalls" component={Waterfalls} />
+              <Route path="/Parks" component={Parks} />
+              <Route path="/Hike" component={Hike} />
+              <Route path="/Beach" component={Beach} />
+              <Route path="/Hidden" component={Hidden} />
             </Switch>
           </div>
         </div>
