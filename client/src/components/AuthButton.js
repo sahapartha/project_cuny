@@ -12,7 +12,7 @@ const classes2 = "btn btn-outline-danger";
 const AuthButton = withRouter(({ history }) => {
   if(!auth.isAuthenticated) {
     return (
-      <Link className={classes} to="/login"><UserAddOutlined /> Login</Link>
+      <Link className={classes} to="/login"><UserAddOutlined /> Login / Register</Link>
     );
   }
   
