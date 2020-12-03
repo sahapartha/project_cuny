@@ -1,72 +1,93 @@
-import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
-  NavLink
-} from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
-import ShowPostPage from './pages/ShowPostPage';
-import AboutUsPage from './pages/AboutUsPage';
-import RegisterPage from './pages/RegisterPage';
-import LoginPage from './pages/LoginPage';
-import PrivateRoute from './components/PrivateRoute';
-import AuthButton from './components/AuthButton';
+  NavLink,
+} from "react-router-dom";
+import { Image } from "react-bootstrap";
+import PostsListPage from "./pages/PostsListPage";
+import PostFormPage from "./pages/PostFormPage";
+import ShowPostPage from "./pages/ShowPostPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import PrivateRoute from "./components/PrivateRoute";
+import AuthButton from "./components/AuthButton";
+import logo from "./logo.png";
+import "./App.css";
+import { Layout, Menu, Breadcrumb } from "antd";
+import {
+  HomeOutlined,
+  HomeFilled,
+  HeartOutlined,
+  EnvironmentOutlined,
+  TeamOutlined,
+  EnvironmentFilled,
+} from "@ant-design/icons";
+import "antd/dist/antd.css";
+import { Typography, Button } from "antd";
 
-
-import './App.css';
-
+const { Text, Title } = Typography;
+const { Header, Content, Footer } = Layout;
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about-us">
-            About Us
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/register">
-            Register
-          </NavLink>
-        </li>
-      </ul>
-      <AuthButton />
-    </nav>
+    <Layout className="layout">
+      <Header>
+        <div className="logo" src={logo} />
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
+          <Menu.Item key="0">
+            <NavLink exact to="/">
+              <HomeOutlined />
+              Home
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="1">
+            <NavLink exact to="/posts/new">
+              <EnvironmentOutlined />
+              Post ur Place
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <NavLink exact to="/about-us">
+              <HeartOutlined />
+              About Us
+            </NavLink>
+          </Menu.Item>
+          <Menu.Item key="3">
+            <NavLink exact to="/register">
+              <TeamOutlined />
+              Login/Register
+            </NavLink>
+          </Menu.Item>
+        </Menu>
+      </Header>
+    </Layout>
   );
 }
-
 
 class App extends React.Component {
   render() {
     return (
-        <Router>
-          <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route path="/login" component={LoginPage} />
-                <PrivateRoute path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/" component={PostsListPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/register" component={RegisterPage} />
-              </Switch>
-            </div>
+      <Router>
+        <Navigation />
+        <div className="container-fluid text-center">
+          <div className="row justify-content-center">
+            <Switch>
+              <Route path="/login" component={LoginPage} />
+              <PrivateRoute path="/posts/new" component={PostFormPage} />
+              <Route path="/posts/:id" component={ShowPostPage} />
+              <Route exact path="/" component={PostsListPage} />
+              <Route path="/about-us" component={AboutUsPage} />
+              <Route path="/register" component={RegisterPage} />
+            </Switch>
           </div>
-        </Router>
+        </div>
+      </Router>
     );
   }
 }
-
 
 export default App;
