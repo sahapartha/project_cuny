@@ -1,6 +1,13 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { Form, Input, Button, Checkbox } from 'antd';
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
+const tailLayout = {
+  wrapperCol: { offset: 8, span: 16 },
+};
 
 class RegisterPage extends React.Component {
     state = {
@@ -75,43 +82,82 @@ class RegisterPage extends React.Component {
         }
 
     return (
-
       <form>
-          <div className="input-group">
-        { errorMessage }
-     
-             <input 
-            type="First Name"
-            className="form-control"
-            name="firstName"
-            placeholder="FirstName" 
-            value={this.state.firstName} 
-            onChange={this.firstChanged} />
-         <input 
-            type="Last Name"
-            className="form-control"
-            name="lastname"
-            placeholder="LastName" 
-            value={this.state.lastName} 
-            onChange={this.lastChanged} />
-             <input 
-            type="email"
-            className="form-control"
-            name="email"
-            placeholder="Email" 
-            value={this.state.email} 
-            onChange={this.emailChanged} />
-          <input 
-            type="password"
-            className="form-control"
-            name="password"
-            placeholder="Password" 
-            value={this.state.password} 
-            onChange={this.passChanged} />
-         
-         
-        <button className="btn btn-primary" onClick={this.saveUser}>Register</button>
-        </div>
+        <Form {...layout} name="basic" initialValues={{ remember: true }}>
+          <div className="input-grup">
+            {errorMessage}
+            <Form.Item
+              label="First Name"
+              rules={[
+                { required: true, message: "Please input your First Name!" },
+              ]}
+              style={{paddingRight: '50px', paddingTop: '20px'}}
+            >
+              <input
+                type="First Name"
+                className="form-control"
+                name="firstName"
+                placeholder="First Name"
+                value={this.state.firstName}
+                onChange={this.firstChanged}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Last Name"
+              rules={[
+                { required: true, message: "Please input your Last Name!" },
+              ]}
+              style={{paddingRight: '50px'}}
+            >
+              <input
+                type="Last Name"
+                className="form-control"
+                name="lastname"
+                placeholder="Last Name"
+                value={this.state.lastName}
+                onChange={this.lastChanged}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[{ required: true, message: "Please input your email!" }]}
+              style={{paddingRight: '50px'}}
+            >
+              <input
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.emailChanged}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+              style={{paddingRight: '50px'}}
+            >
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.passChanged}
+              />
+            </Form.Item>
+
+            <Form.Item {...tailLayout}>
+              <button className="btn btn-primary" onClick={this.saveUser}>
+                Register
+              </button>
+            </Form.Item>
+          </div>
+        </Form>
       </form>
     );
   }

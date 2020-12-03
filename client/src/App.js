@@ -54,6 +54,14 @@ const { Text, Title } = Typography;
 const { Header, Content, Footer } = Layout;
 const menu = (
   <Menu>
+
+    <Menu.Item>
+
+    <a rel="noopener noreferrer" href="/posts">
+        Wonderfull Places
+      </a>
+
+    </Menu.Item>
     <Menu.Item>
 
     <NavLink className="nav-Link" exact to="/Mountain"> Mountain </NavLink>
@@ -90,7 +98,7 @@ const menu = (
 
 function Navigation(props) {
   return (
-    <Layout className="layout shadow mb-3" style={{ marginBottom: "20px" }}>
+    <Layout className="layout shadow mb-1" style={{ marginBottom: "20px" }}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
@@ -108,12 +116,13 @@ function Navigation(props) {
           </Menu.Item>
           <Menu.Item key="6">
             <Dropdown overlay={menu}>
-              <a
+              <a 
                 className="ant-dropdown-link"
                 onClick={(e) => e.preventDefault()}
               >
                <CarOutlined />
-               Places <DownOutlined />
+              Places
+             <DownOutlined />
               </a>
             </Dropdown>
             {/* <NavLink exact to="/register">
@@ -130,19 +139,20 @@ function Navigation(props) {
 
 {/* From alamin  */}
 
-          <Menu.Item key="4">
+          <Menu.Item key="3">
             <NavLink exact to="/Map">
               <TeamOutlined />
               Map
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="5">
+          <Menu.Item key="4">
             <NavLink exact to="/PlaceWidget">
               <TeamOutlined />
               PlaceWidget
             </NavLink>
           </Menu.Item>
-          <div style={{ float: "right" }}>
+          <div style={{ float: "right",}}>
+
             <AuthButton />
           </div>
 
