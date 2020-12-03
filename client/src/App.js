@@ -7,6 +7,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import { Image } from "react-bootstrap";
+import HomePage from "./pages/HomePage";
 import PostsListPage from "./pages/PostsListPage";
 import PostFormPage from "./pages/PostFormPage";
 import ShowPostPage from "./pages/ShowPostPage";
@@ -17,7 +18,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import AuthButton from "./components/AuthButton";
 import logo from "./logo.png";
 import "./App.css";
-import { Layout, Menu, Breadcrumb } from "antd";
+import {  
+  Layout, 
+  Menu, 
+  Breadcrumb, 
+  Space,
+  Dropdown } from "antd";
+import { DownOutlined } from '@ant-design/icons';
 import {
   HomeOutlined,
   HomeFilled,
@@ -25,6 +32,7 @@ import {
   EnvironmentOutlined,
   TeamOutlined,
   EnvironmentFilled,
+  CarOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { Typography, Button } from "antd";
@@ -38,17 +46,51 @@ import Hike from './pages/Hike';
 import Beach from './pages/Beach';
 import Hidden from './pages/Hidden';
 import PlaceWidget from './pages/PlaceWidget';
-import Dropdown  from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
 const { Text, Title } = Typography;
 const { Header, Content, Footer } = Layout;
+const menu = (
+  <Menu>
+    <Menu.Item>
+
+    <NavLink className="nav-Link" exact to="/Mountain"> Mountain </NavLink>
+
+    </Menu.Item>
+    <Menu.Item>
+
+    <NavLink className="nav-link" exact to="/Parks"> Parks </NavLink>
+
+    </Menu.Item>
+    <Menu.Item>
+
+    <NavLink className="nav-Link" exact to="/Beach"> Beach </NavLink>
+
+    </Menu.Item>
+    <Menu.Item>
+
+    <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
+
+    </Menu.Item>
+    <Menu.Item>
+
+    <NavLink className="nav-Link" exact to="/Hike"> Hike</NavLink>
+
+    </Menu.Item>
+    <Menu.Item>
+
+    <NavLink className="nav-Link" exact to="/Hidden"> Hidden Gems</NavLink>
+
+    </Menu.Item>
+    <Menu.Item danger>a danger item</Menu.Item>
+  </Menu>
+);
 
 function Navigation(props) {
   return (
-    <Layout className="layout">
+    <Layout className="layout shadow mb-3" style={{ marginBottom: "20px" }}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
@@ -64,16 +106,25 @@ function Navigation(props) {
               Post ur Place
             </NavLink>
           </Menu.Item>
+          <Menu.Item key="6">
+            <Dropdown overlay={menu}>
+              <a
+                className="ant-dropdown-link"
+                onClick={(e) => e.preventDefault()}
+              >
+               <CarOutlined />
+               Places <DownOutlined />
+              </a>
+            </Dropdown>
+            {/* <NavLink exact to="/register">
+              <TeamOutlined />
+              Create an account
+            </NavLink> */}
+          </Menu.Item>
           <Menu.Item key="2">
             <NavLink exact to="/about-us">
               <HeartOutlined />
               About Us
-            </NavLink>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <NavLink exact to="/register">
-              <TeamOutlined />
-              Login/Register
             </NavLink>
           </Menu.Item>
 
@@ -91,45 +142,19 @@ function Navigation(props) {
               PlaceWidget
             </NavLink>
           </Menu.Item>
-          
-          <Menu.Item>
-          <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-              select
-            </Dropdown.Toggle>
+          <div style={{ float: "right" }}>
+            <AuthButton />
+          </div>
 
-            <Dropdown.Menu>
-            
-            <Menu.Item key="6"><Dropdown.Item> <NavLink className="nav-link" exact to="/Parks"> Parks </NavLink>
-            </Dropdown.Item>
-             </Menu.Item>
-            
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Mountain"> Mountain </NavLink>
-            </Dropdown.Item>
-
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Waterfalls"> Waterfalls</NavLink>
-            </Dropdown.Item>
-
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Beach"> Beach </NavLink>
-            </Dropdown.Item>
-
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hidden"> Hidden Gems</NavLink>
-            </Dropdown.Item>
-
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Hike"> Hike</NavLink>
-            </Dropdown.Item>
-
-            <Dropdown.Item> <NavLink className="nav-Link" exact to="/Parks"> Parks</NavLink>
-            </Dropdown.Item>
-
-
-            </Dropdown.Menu>
-          </Dropdown>
-          </Menu.Item>
         </Menu>
       </Header>
     </Layout>
   );
+}
+function Bfooter(props){
+return(
+  <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+);
 }
 
 function calling_map(props){
@@ -156,11 +181,14 @@ class App extends React.Component {
     return (
       <Router>
         <Navigation />
-        <div className="container-fluid text-center">
-          <div className="row justify-content-center">
+        {/* <HomePage/> */}
+        {/* <div className="container-fluid text-center">
+          <div className="row justify-content-center"> */}
             <Switch>
-              <Route path="/login" component={LoginPage} />
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/login" component={LoginPage} />
               <PrivateRoute path="/posts/new" component={PostFormPage} />
+
               <Route path="/posts/:id" component={ShowPostPage} />
               <Route exact path="/" component={PostsListPage} />
               <Route path="/about-us" component={AboutUsPage} />
@@ -176,9 +204,16 @@ class App extends React.Component {
               <Route path="/Hike" component={Hike} />
               <Route path="/Beach" component={Beach} />
               <Route path="/Hidden" component={Hidden} />
+              
+              
+              
+             
+
             </Switch>
-          </div>
-        </div>
+          {/* </div>
+        </div> */}
+        
+        <Bfooter/>
       </Router>
     );
   }
