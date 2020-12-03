@@ -17,7 +17,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import AuthButton from "./components/AuthButton";
 import logo from "./logo.png";
 import "./App.css";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, Breadcrumb, Space } from "antd";
 import {
   HomeOutlined,
   HomeFilled,
@@ -34,7 +34,7 @@ const { Header, Content, Footer } = Layout;
 
 function Navigation(props) {
   return (
-    <Layout className="layout">
+    <Layout className="layout shadow mb-3" style={{ marginBottom: '20px' }}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
@@ -50,22 +50,32 @@ function Navigation(props) {
               Post ur Place
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="2">
-            <NavLink exact to="/about-us">
-              <HeartOutlined />
-              About Us
-            </NavLink>
-          </Menu.Item>
           <Menu.Item key="3">
             <NavLink exact to="/register">
               <TeamOutlined />
               Login/Register
             </NavLink>
           </Menu.Item>
+          <Menu.Item key="2">
+            <NavLink exact to="/about-us">
+              <HeartOutlined />
+              About Us
+            </NavLink>
+          </Menu.Item>
+          <div style={{float: 'right'}} >
+          <AuthButton />
+          </div>
+                  
         </Menu>
+        
       </Header>
     </Layout>
   );
+}
+function Bfooter(props){
+return(
+  <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+);
 }
 
 class App extends React.Component {
@@ -73,6 +83,7 @@ class App extends React.Component {
     return (
       <Router>
         <Navigation />
+        
         <div className="container-fluid text-center">
           <div className="row justify-content-center">
             <Switch>
@@ -85,6 +96,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
+        <Bfooter/>
       </Router>
     );
   }

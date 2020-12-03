@@ -2,12 +2,18 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import auth from '../services/auth';
-
-const classes = "btn btn-primary";
+import {
+  UserAddOutlined,
+  UserDeleteOutlined
+} from "@ant-design/icons";
+const classes = "btn btn-outline-success";
+const classes2 = "btn btn-outline-danger";
 
 const AuthButton = withRouter(({ history }) => {
   if(!auth.isAuthenticated) {
-    return <Link className={classes} to="/login">Login</Link>;
+    return (
+      <Link className={classes} to="/login"><UserAddOutlined /> Login</Link>
+    );
   }
   
   const logout = () => {
@@ -16,10 +22,8 @@ const AuthButton = withRouter(({ history }) => {
 
   return (
     <div>
-      <p className="text-white bg-dark">  Welcome! </p>
-    
- 
-      <button className={classes} onClick={logout}>Logout</button>
+      <div className="" style={{float: 'left', paddingRight: '5px', color: 'white'}}>  Welcome! </div>
+      <button className={classes2} onClick={logout}><UserDeleteOutlined /> Logout</button>
     </div>
   );
 });
