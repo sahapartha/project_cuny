@@ -101,7 +101,7 @@ const menu = (
 
 function Navigation(props) {
   return (
-    <Layout className="layout shadow mb-1" style={{ marginBottom: "20px"}}>
+    <Layout className="layoutshadow mb-1" style={{ marginBottom: "20px"}}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
