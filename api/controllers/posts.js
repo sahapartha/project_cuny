@@ -42,12 +42,24 @@ router.post('/',  passport.isAuthenticated(), function (req, res) {
 // explore other patterns to reduce code duplication.
 // TODO: Can you spot where we have some duplication below?
 
-
 router.get('/', (req,res) => {
-  Post.findAll({})
+  let {city1}=req.query;
+  city1 = ['Park', 'Waterfall'].includes(city1) ? city1 : undefined;
+  if (city1===undefined){
+    Post.findAll({})
     .then(posts => res.json(posts));
 
-});/*
+  } else {
+  Post.findAll({where: {category:city1}})
+    .then(posts => res.json(posts));}
+
+});
+// router.get('/', (req,res) => {
+//   Post.findAll({})
+//     .then(posts => res.json(posts));
+
+// });
+/*
 router.get('/city', (req,res) => {
   const {c} = req.params
   Post.findAll({ where: { city: c }})
