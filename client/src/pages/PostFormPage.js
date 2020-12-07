@@ -1,5 +1,27 @@
 import React from 'react';
+import bgimg from './bgimg.jpeg'
+import "../App.css";
 import { Redirect } from 'react-router-dom';
+import { Form, Input, Button, Checkbox,Divider } from 'antd';
+import {ReloadOutlined, UserOutlined} from '@ant-design/icons';
+import { Container,Card } from 'react-bootstrap';
+import {
+  FileTextOutlined,
+  SendOutlined
+} from "@ant-design/icons";
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+ 
+};
+const tailLayout = {
+  wrapperCol: { offset: 8, span: 16 },
+};
+var sectionStyle = {
+  backgroundImage: `url(${bgimg})`,
+  backgroundColor: 'rgba(255, 249, 192, 0.7)',
+ 
+}
 
 class PostFormPage extends React.Component {
   state = {
@@ -124,87 +146,191 @@ class PostFormPage extends React.Component {
     }
 
     return (
-      <div className="col-10 col-md-8 col-lg-7">
-        { errorMessage }
-        <div className="input-group">
-          <label>Name Of Place</label> 
-          <input 
-            type="text" 
-            value={this.state.nameoftheplace}
-           // className="form-control mr-3 rounded"
-            onChange={this.nameoftheplaceChanged}
-          />
-          <label>Description</label> 
-          <input 
-            type="text" 
-            value={this.state.description}
-           // className="form-control mr-3 rounded"
-            onChange={this.descriptionChanged}
-          />
-           <label>Rate</label> 
-           
+      
+      <div style={sectionStyle}>
+      <Container style={{ paddingTop: "25px", paddingBottom: '25px'}} >
+        <div className="" >
+          {errorMessage}
+          <div className="">
+            <Card style={{opacity: '1', }} className="shadow mb-3">
+              <Card.Header style={{ width: "100%" }}>
+                <FileTextOutlined /> Post Your Place here
+              </Card.Header>
+              <Form  {...layout} name="basic" initialValues={{ remember: true }}>
+                <Form.Item 
+                  label="Name Of Place"
+                  name="place"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.nameoftheplace}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.nameoftheplaceChanged}
+                  />
+                </Form.Item>
 
-          <input 
-            type="text" 
-          
-            value={this.state.rateplace}
-           
-           // className="form-control mr-3 rounded"
-            onChange={this.rateplaceChanged}
-            
-          />
-           <label>Street</label> 
-          <input 
-            type="text" 
-            value={this.state.street}
-          //  className="form-control mr-3 rounded"
-            onChange={this.streetChanged}
-          />
-            <label>City</label> 
-          <input 
-            type="text" 
-            value={this.state.city}
-          //  className="form-control mr-3 rounded"
-            onChange={this.cityChanged}
-          />
-            <label>State</label> 
-          <input 
-            type="text" 
-            value={this.state.state}
-           // className="form-control mr-3 rounded"
-            onChange={this.stateChanged}
-          />
-            <label>Zipcode</label> 
-          <input 
-            type="text" 
-            value={this.state.zipcode}
-           // className="form-control mr-3 rounded"
-            onChange={this.zipcodeChanged}
-          />
-            <label>Category</label> 
-          <input 
-            type="text" 
-            value={this.state.category}
-           // className="form-control mr-3 rounded"
-            onChange={this.categoryChanged}
-          />
-            <label>Parking</label> 
-          <input 
-            type="text" 
-            value={this.state.parking}
-           // className="form-control mr-3 rounded"
-            onChange={this.parkingChanged}
-          />
-          <label>Picture</label> 
-            <input type="file" name="mainpicture" 
-             //value={this.state.mainpicture}
-            // className="form-control mr-3 rounded"
-             onChange={this.onFileChange}/>
-            
-          
-
-          <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
+                <Form.Item
+                  label="Description"
+                  name="description"
+                  rules={[
+                    { required: true, message: "Please describe the place" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.description}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.descriptionChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Rate"
+                  name="rate"
+                  rules={[{ required: true, message: "Please rate" }]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.rateplace}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.rateplaceChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Street"
+                  name="street"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.street}
+                    //  className="form-control mr-3 rounded"
+                    onChange={this.streetChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="City"
+                  name="city"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.city}
+                    //  className="form-control mr-3 rounded"
+                    onChange={this.cityChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="State"
+                  name="state"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.state}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.stateChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Zipcode"
+                  name="zipcode"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.zipcode}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.zipcodeChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Category"
+                  name="category"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.category}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.categoryChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Parking"
+                  name="parking"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="text"
+                    value={this.state.parking}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.parkingChanged}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Picture"
+                  name="picture"
+                  rules={[
+                    { required: true, message: "Please input place name" },
+                  ]}
+                  style={{ paddingRight: "50px", paddingTop: "20px" }}
+                >
+                  <input
+                    type="file"
+                    name="mainpicture"
+                    //value={this.state.mainpicture}
+                    // className="form-control mr-3 rounded"
+                    onChange={this.onFileChange}
+                  />
+                </Form.Item>
+                <Form.Item {...tailLayout}>
+                  <button
+                    onClick={this.savePost}
+                    style={{ float: "right", marginRight: "20px" }}
+                    className="btn btn-primary ml-auto"
+                  >
+                    <SendOutlined />
+                    <div
+                      style={{
+                        float: "right",
+                        paddingTop: "3px",
+                        paddingLeft: "2px",
+                      }}
+                    >
+                      {" "}
+                      Save Post
+                    </div>
+                  </button>
+                </Form.Item>
+              </Form>
+            </Card>
+          </div>
         </div>
+      </Container>
       </div>
     );
   }

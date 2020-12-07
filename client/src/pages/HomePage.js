@@ -26,30 +26,24 @@ class HomePage extends React.Component{
                 <Button variant="primary">Learn more</Button>
               </p>
             </Jumbotron> */}
-            <Carousel autoplay effect="fade">
+            <Carousel autoplay effect="fade" style={{}}>
               <div>
-                <h3 style={contentStyle}><Image height={900}
-      width={1800}
+                <h3 style={contentStyle}><Image  style={{height: '900',width: '100%'}}
       src="https://w.wallhaven.cc/full/rd/wallhaven-rd7ro1.jpg"
     /></h3>
               </div>
               <div>
-                <h3 style={contentStyle}><Image height={600}
-      width={1800}
+                <h3 style={contentStyle}><Image style={{height: '900',width: '100%'}}
       src="https://w.wallhaven.cc/full/rd/wallhaven-rd7drw.jpg"
     /></h3>
               </div>
               <div>
-                <h3 style={contentStyle}><Image
-      height={600}
-      width={1800}
+                <h3 style={contentStyle}><Image style={{height: '900',width: '100%'}}
       src="https://w.wallhaven.cc/full/96/wallhaven-967zyk.jpg"
     /></h3>
               </div>
               <div>
-                <h3 style={contentStyle}><Image
-      height={600}
-      width={1800}
+                <h3 style={contentStyle}><Image style={{height: '900',width: '100%'}}
       src="https://w.wallhaven.cc/full/dg/wallhaven-dg7y23.jpg"
     /></h3>
               </div>

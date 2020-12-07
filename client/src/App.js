@@ -5,8 +5,9 @@ import {
   Route,
   Link,
   NavLink,
+  useLocation
 } from "react-router-dom";
-import { Image } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import HomePage from "./pages/HomePage";
 import PostsListPage from "./pages/PostsListPage";
 import PostFormPage from "./pages/PostFormPage";
@@ -23,7 +24,7 @@ import {
   Menu, 
   Breadcrumb, 
   Space,
-  Dropdown } from "antd";
+  Dropdown,List } from "antd";
 import { DownOutlined } from '@ant-design/icons';
 import {
   HomeOutlined,
@@ -35,7 +36,7 @@ import {
   CarOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
-import { Typography, Button } from "antd";
+import { Typography, Button, Card} from "antd";
 
 const { Text, Title } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -62,7 +63,7 @@ const menu = (
 
 function Navigation(props) {
   return (
-    <Layout className="layout shadow mb-1" style={{ marginBottom: "20px" }}>
+    <Layout className="layout shadow mb-1" style={{ marginBottom: "20px"}}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
@@ -109,8 +110,12 @@ function Navigation(props) {
   );
 }
 function Bfooter(props){
+  const location = useLocation()
+  // {location.pathname}
 return(
-  <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+<Footer style={{bottom: '0', width: '100%'}}> 
+ 
+</Footer>
 );
 }
 
@@ -125,7 +130,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={LoginPage} />
-              <PrivateRoute path="/posts/new" component={PostFormPage} />
+              <Route path="/posts/new" component={PostFormPage} />
               <Route exact path="/posts/:id" component={ShowPostPage} />
               <Route exact path="/posts" component={PostsListPage} />
               <Route exact path="/about-us" component={AboutUsPage} />
