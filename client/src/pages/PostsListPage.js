@@ -14,8 +14,29 @@ class PostsListPage extends React.Component {
   state = {
     posts: [],
     loading: true,
+    test:'',
   }
 
+  test = (event) => {
+    let city1=event.target.value; 
+    this.setState({
+       test: city1, 
+      })
+      fetch("/api/posts?city1="+city1)
+   
+        .then(res => res.json())
+        .then(posts => { 
+          this.setState({
+            loading: false,
+            posts: posts.map((p,ii) => <Post {...p} key={ii} />
+           
+            ),
+          
+          });
+        })
+        .catch(err => console.log("API ERROR: ", err));
+
+      ;}
 
   componentDidMount() {
     fetch("/api/posts")
@@ -41,6 +62,14 @@ class PostsListPage extends React.Component {
     return (
     <div style={{padding: '0px'}}>
     <Card style={{textAlign: 'center'}} strong title="Places" >
+    <div>
+       <select onChange={this.test} value={this.state.test}>
+       <option value="null"></option>
+       <option value="Park">Park
+      </option>
+      <option value="Waterfall">Waterfall</option>
+    </select>
+    </div>
     { this.state.posts }
     </Card>
       {/* <div className="site-card-border-less-wrapper">
