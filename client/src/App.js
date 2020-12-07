@@ -193,9 +193,12 @@ function calling_map(props){
 
 
 
+
+
 class App extends React.Component {
   render() {
     return (
+      
       <Router>
         <Navigation />
         {/* <HomePage/> */}
@@ -207,7 +210,7 @@ class App extends React.Component {
               <PrivateRoute path="/posts/new" component={PostFormPage} />
 
               <Route path="/posts/:id" component={ShowPostPage} />
-              <Route exact path="/" component={PostsListPage} />
+              <Route exact path="/posts" component={PostsListPage} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/register" component={RegisterPage} />
 
