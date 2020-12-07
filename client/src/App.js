@@ -130,7 +130,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={LoginPage} />
-              <Route path="/posts/new" component={PostFormPage} />
+              <PrivateRoute path="/posts/new" component={PostFormPage} />
               <Route exact path="/posts/:id" component={ShowPostPage} />
               <Route exact path="/posts" component={PostsListPage} />
               <Route exact path="/about-us" component={AboutUsPage} />
