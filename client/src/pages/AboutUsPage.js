@@ -1,65 +1,64 @@
 import React from 'react';
 import CardDeck from 'react-bootstrap/CardDeck';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import alamin from "./alamin.jpeg";
+import alamin5 from "./alamin5.jpg";
+import Aboutbg from "./Aboutbg.jpg";
+import Back from "./Back.jpeg";
 import "./AboutUs.css";
 import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
+import { Card } from 'antd';
+
+const { Meta } = Card;
+
+var sectionStyle = {
+  backgroundImage: `url(${Aboutbg})`,
+  backgroundColor: 'rgba(255, 249, 192, 0.7)',
+}
 
 
 function AboutUsPage(props) {
   return (
-    <div>
-      <Container>
-        <Row>
-          <Col xs={{ order: 'last' }}>
-          
-          <Card className="bg-dark text-black">
-          <Card.Img src={alamin} />
-          <Card.ImgOverlay>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-           This is a wider card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-           </Card.Text>
-           <Card.Text>Last updated 3 mins ago</Card.Text>
-           </Card.ImgOverlay>
-           </Card>
-           </Col>
-
-          <Col xs>
-          <Card className="bg-dark text-black">
-          <Card.Img src={alamin} />
-          <Card.ImgOverlay>
-          <Card.Title>Alamin Hossain</Card.Title>
-          <Card.Text>
-           This is a wider card with supporting text below as a natural lead-in to
-           additional content. This content is a little bit longer.
-           </Card.Text>
-           <Card.Text>This is roughly about me</Card.Text>
-           </Card.ImgOverlay>
-           </Card>
-           </Col>
-
-          <Col xs={{ order: 'first' }}>
-          <Card className="bg-dark text-black">
-          <Card.Img src={alamin} />
-          <Card.ImgOverlay>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-          </Card.Text>
-          <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-          </Card>
-          </Col>
-    {/* <div>A little info about us.</div> */}
-          </Row>
-          </Container>
-          </div>
+    <div style={sectionStyle}
+    >
+      
+      <Container style={{paddingTop:'80px', paddingBottom:'250px'}}>
+      
+      <Row>
+        <Col><Card
+    hoverable
+    style={{ width: 280}}
+    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+  >
+    <Meta title="Europe Street beat" description="www.instagram.com" />
+  </Card></Col>
+  <Col>
+  <Card 
+    hoverable
+    style={{ width: 280, height:450}}
+    cover={<img alt="example" style={{ height:360}} src={alamin5} />}
+  >
+    <Meta title="Europe Street beat" description="www.instagram.com" />
+  </Card></Col>
+  <Col><Card
+    hoverable
+    style={{ width: 280 }}
+    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+  >
+    <Meta title="Europe Street beat" description="www.instagram.com" />
+  </Card></Col>
+  </Row>
+</Container>
+      
+      
+      
+      
+      
+   </div>
   );
 }
 

@@ -168,8 +168,8 @@ function Bfooter(props){
   const location = useLocation()
   // {location.pathname}
 return(
-<Footer style={{bottom: '0', width: '100%'}}> 
- 
+<Footer className="bfooter" style={{bottom: '0', width: '100%'}}> 
+  Designed by 
 </Footer>
 );
 }

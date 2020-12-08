@@ -2,7 +2,8 @@ import React from 'react';
 import bgimg from './bgimg.jpeg'
 import "../App.css";
 import { Redirect } from 'react-router-dom';
-import { Form, Input, Button, Checkbox,Divider } from 'antd';
+import { Form, Input, Button, Checkbox,Divider, Select } from 'antd';
+import { FormInstance } from 'antd/lib/form';
 import {ReloadOutlined, UserOutlined} from '@ant-design/icons';
 import { Container,Card } from 'react-bootstrap';
 import {
@@ -22,6 +23,7 @@ var sectionStyle = {
   backgroundColor: 'rgba(255, 249, 192, 0.7)',
  
 }
+const { Option } = Select;
 
 class PostFormPage extends React.Component {
   state = {
@@ -269,13 +271,42 @@ class PostFormPage extends React.Component {
                   ]}
                   style={{ paddingRight: "50px", paddingTop: "20px" }}
                 >
-                  <input
+                   <select onChange={this.categoryChanged} value={this.state.category}>
+                   <option value="null"></option>
+                   <option value="Park">Park</option>
+                   <option value="Waterfall">Waterfalls</option>
+                   <option value="Mountain">Mountain</option>
+                   <option value="Beach">Beach</option>
+                   <option value="Waterfall">Waterfall</option>
+                   <option value="Hidden">Hidden Gem</option>
+                   <option value="Hike">Hike</option>
+                   </select>
+                   </Form.Item>
+
+
+                  
+                {/* <Select
+                  placeholder="Select a option and change input text above"
+                  onChange={this.categoryChanged}
+                  allowClear
+                   >
+                  <Option value={this.state.category}>Park</Option>
+                  <Option value={this.state.category}>Mountain</Option>
+                  <Option value={this.state.category}>Waterfalls</Option>
+                  {/* <input
                     type="text"
                     value={this.state.category}
                     // className="form-control mr-3 rounded"
                     onChange={this.categoryChanged}
-                  />
-                </Form.Item>
+                  /> */}
+                {/* </Select>
+                </Form.Item> */} 
+
+
+
+
+
+
                 <Form.Item
                   label="Parking"
                   name="parking"
