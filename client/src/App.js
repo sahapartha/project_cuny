@@ -36,6 +36,7 @@ import {
   CarOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
+
 import { Typography, Button } from "antd";
 // from alamin
 
@@ -49,6 +50,7 @@ import Hidden from './pages/Hidden';
 import PlaceWidget from './pages/PlaceWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 
 const { Text, Title } = Typography;
@@ -99,7 +101,7 @@ const menu = (
 
 function Navigation(props) {
   return (
-    <Layout className="layout shadow mb-1" style={{ marginBottom: "20px"}}>
+    <Layout className="layoutshadow mb-1" style={{ marginBottom: "20px"}}>
       <Header>
         <div className="logo" src={logo} />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
@@ -166,8 +168,8 @@ function Bfooter(props){
   const location = useLocation()
   // {location.pathname}
 return(
-<Footer style={{bottom: '0', width: '100%'}}> 
- 
+<Footer className="bfooter" style={{bottom: '0', width: '100%'}}> 
+  Designed by 
 </Footer>
 );
 }
@@ -191,9 +193,12 @@ function calling_map(props){
 
 
 
+
+
 class App extends React.Component {
   render() {
     return (
+      
       <Router>
         <Navigation />
         {/* <HomePage/> */}
