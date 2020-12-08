@@ -21,7 +21,26 @@
   color: #09d3ac;
 }
 */
+
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 70%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 .map{
   width: 900px;
+  text-align: center;
+  margin: auto;
 
+
+}
+#bfooter{
+  
 }
