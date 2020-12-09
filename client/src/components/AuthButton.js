@@ -22,7 +22,7 @@ const AuthButton = withRouter(({ history }) => {
 
   return (
     <div>
-      <div className="" style={{float: 'left', paddingRight: '5px', color: 'white'}}>  Welcome! </div>
+      <div className="" style={{float: 'left', paddingRight: '5px', color: 'white'}}>  Welcome!, </div>
       <button className={classes2} onClick={logout}><UserDeleteOutlined /> Logout</button>
     </div>
   );

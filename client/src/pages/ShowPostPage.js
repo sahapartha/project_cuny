@@ -2,6 +2,12 @@ import React from 'react';
 import PostsInside from '../components/PostsInside';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
+import indibg from './indibg.jpg';
+
+var sectionStyle = {
+  backgroundImage: `url(${indibg})`,
+  backgroundColor: 'rgba(255, 249, 192, 0.7)',
+}
 
 class ShowPostPage extends React.Component {
   state = {
@@ -36,7 +42,8 @@ class ShowPostPage extends React.Component {
 
 
   render() {
-    if(this.state.notFound) return <Redirect to="/" />;
+    if(this.state.notFound) 
+      {return <Redirect to="/" />;}
    /* <input 
     type="text"
     className="form-control"
@@ -45,8 +52,15 @@ class ShowPostPage extends React.Component {
     value={this.state.city} 
     onChange={this.cityChanged} />*/
     //if(this.state.city) return <Redirect to="/city" />;
-    if(this.state.loading) return <Loading />;
-    return this.state.post;
+    if(this.state.loading) 
+        {return <Loading />;}
+      return (
+        <div>
+      <div style={sectionStyle}>
+      {this.state.post}
+      </div>
+      </div>
+      );
   }
 }
 

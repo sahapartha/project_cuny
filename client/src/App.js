@@ -175,7 +175,7 @@ return(
 
 function calling_map(props){
   return(
-    <div class ="map">
+    <div class ="map" style={{ paddingBottom: '5%'}}>
       <Map
      google={props.google}
      center={{lat: 40.7291206, lng: -73.78632
