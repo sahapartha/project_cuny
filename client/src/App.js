@@ -49,7 +49,6 @@ import Beach from './pages/Beach';
 import Hidden from './pages/Hidden';
 import PlaceWidget from './pages/PlaceWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
 
 
@@ -67,7 +66,7 @@ const menu = (
     </Menu.Item>
     <Menu.Item>
 
-    <NavLink className="nav-Link" exact to="/Mountain"> Mountain </NavLink>
+    <NavLink className="nav-Link1" exact to="/Mountain"> Mountain </NavLink>
 
     </Menu.Item>
     <Menu.Item>
@@ -104,7 +103,7 @@ function Navigation(props) {
     <Layout className="layoutshadow mb-1" style={{ marginBottom: "20px"}}>
       <Header>
         <div className="logo" src={logo} />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["5"]}>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["6"]}>
           <Menu.Item key="0">
             <NavLink exact to="/">
               <HomeOutlined />
@@ -117,7 +116,7 @@ function Navigation(props) {
               Post ur Place
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="6">
+          <Menu.Item key="2">
             <Dropdown overlay={menu}>
               <a 
                 className="ant-dropdown-link"
@@ -133,7 +132,7 @@ function Navigation(props) {
               Create an account
             </NavLink> */}
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item key="3">
             <NavLink exact to="/about-us">
               <HeartOutlined />
               About Us
@@ -142,13 +141,13 @@ function Navigation(props) {
 
 {/* From alamin  */}
 
-          <Menu.Item key="3">
+          <Menu.Item key="4">
             <NavLink exact to="/Map">
               <TeamOutlined />
               Map
             </NavLink>
           </Menu.Item>
-          <Menu.Item key="4">
+          <Menu.Item key="5">
             <NavLink exact to="/PlaceWidget">
               <TeamOutlined />
               PlaceWidget
@@ -169,7 +168,7 @@ function Bfooter(props){
   // {location.pathname}
 return(
 <Footer className="bfooter" style={{bottom: '0', width: '100%'}}> 
-  Designed by 
+  Designed by CTP Student 
 </Footer>
 );
 }
