@@ -6,6 +6,7 @@ import alamin from "./alamin.jpeg";
 import alamin5 from "./alamin5.jpg";
 import Aboutbg from "./Aboutbg.jpg";
 import Partha from "./Partha.png"
+import Alex from "./alex.png"
 import Back from "./Back.jpeg";
 import "./AboutUs.css";
 import Container from 'react-bootstrap/Container'
@@ -47,8 +48,8 @@ function AboutUsPage(props) {
   </Card></Col>
   <Col><Card
     hoverable
-    style={{ width: 280 }}
-    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+    style={{ width: 280, height:450 }}
+    cover={<img alt="example" style={{ height:360, width: '100%'}} src={Alex} />}
   >
     <Meta title="Europe Street beat" description="www.instagram.com" />
   </Card></Col>
