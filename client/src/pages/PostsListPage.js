@@ -69,8 +69,8 @@ class PostsListPage extends React.Component {
       </option>
       <option value="Waterfall">Waterfall</option>
     </select>
-    </div>
-    { this.state.posts }
+    </div><center>{ this.state.posts }</center>
+    
     </Card>
       {/* <div className="site-card-border-less-wrapper">
       <div className="card mb-4 shadow">

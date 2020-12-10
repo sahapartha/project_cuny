@@ -11,10 +11,11 @@ const gridStyle = {
 function Post({id, mainpicture, nameoftheplace, description, rateplace, street, city, state, zipcode, category, parking, username}) {
   return (
     <Link to={"/posts/"+id}>
-    <Card.Grid style={gridStyle}>
-        
-         <div style={{paddingBottom: '5px'}}>
-         <img src={mainpicture} width="300" height="300"  alt="main" />  </div>
+      <div className="col-10 col-md-6 col-lg-3" style={{paddingTop: '10px'}}>
+     <div className="card mb-4 shadow">
+      <div className="card-body card-text">
+         <div style={{paddingBottom: '5px', height: '300', width: '200'}}>
+         <img src={mainpicture} width="250" height="300"  alt="main" />  </div>
          <div className="card-footer small text-muted text-right">
          <Link to={"/posts/"+id}>{nameoftheplace}</Link>
         
@@ -23,7 +24,9 @@ function Post({id, mainpicture, nameoftheplace, description, rateplace, street, 
          <div> {rateplace} </div>
          Made by user { username }
         </div>
-    </Card.Grid>
+    </div>
+    </div>
+    </div>
     </Link>
 
     //<div className="col-10 col-md-8 col-lg-7"> 
