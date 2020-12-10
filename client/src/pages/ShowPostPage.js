@@ -2,11 +2,12 @@ import React from 'react';
 import PostsInside from '../components/PostsInside';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
-import indibg from './indibg.jpg';
+import bginside2 from './bginside2.jpg';
 
 var sectionStyle = {
-  backgroundImage: `url(${indibg})`,
+  backgroundImage: `url(${bginside2})`,
   backgroundColor: 'rgba(255, 249, 192, 0.7)',
+  
 }
 
 class ShowPostPage extends React.Component {
@@ -56,7 +57,7 @@ class ShowPostPage extends React.Component {
         {return <Loading />;}
       return (
         <div>
-      <div style={sectionStyle}>
+      <div style={{height: '100%'}} style={sectionStyle}>
       {this.state.post}
       </div>
       </div>

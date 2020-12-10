@@ -34,10 +34,14 @@ import {
   TeamOutlined,
   EnvironmentFilled,
   CarOutlined,
+  FacebookOutlined,
+  TwitterOutlined,
+    LinkedinOutlined,
+    InstagramOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 
-import { Typography, Button } from "antd";
+import { Typography, Button, Divider } from "antd";
 // from alamin
 
 import Map from './pages/Map';
@@ -167,8 +171,33 @@ function Bfooter(props){
   const location = useLocation()
   // {location.pathname}
 return(
-<Footer className="bfooter" style={{bottom: '0', width: '100%'}}> 
-  Designed by CTP Student 
+<Footer className="bfooter" style={{bottom: '0', width: '100%', backgroundColor: '#37384E', color: '#C89E7C', textAlign: 'Center'}}> 
+  
+  <div class="row">
+    <div class="col-sm">
+    Designed by CTP Student
+    </div>
+    <div class="col-sm">
+    <ul style={{ listStyle: "none", textAlign: 'left'}}>
+      <li>Home</li>
+      <li>About Us</li>
+      <li>Contact Us</li>
+      <li>Places</li>
+    </ul>
+    </div>
+    <div class="col-sm" style={{textAlign: 'left'}}>
+    <div style={{fontWeight: 'bold'}}>Follow Us on:</div>
+    <FacebookOutlined style={{ fontSize: '20px', color: '#08c', paddingRight: '5px'}} /> 
+    <TwitterOutlined style={{ fontSize: '20px', color: '#08c', paddingRight: '5px'}}/>  
+    <LinkedinOutlined style={{ fontSize: '20px', color: '#08c', paddingRight: '5px'}}/> 
+    <InstagramOutlined style={{ fontSize: '20px', color: '#08c', paddingRight: '5px'}}/> 
+    
+    </div>
+  </div>
+  <Divider dashed style={{backgroundColor: '#C89E7C'}}/>
+  <div style={{textAlign: 'right'}}>
+  Developed by Partha,Alex,Alamin
+    </div>
 </Footer>
 );
 }

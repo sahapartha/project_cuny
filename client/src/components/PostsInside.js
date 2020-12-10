@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { Card } from 'antd';
 import { Divider, Typography } from 'antd';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const { Title,Text} = Typography;
 
@@ -13,7 +13,7 @@ const { Title,Text} = Typography;
 function Post({id, mainpicture, nameoftheplace, description, rateplace, street, city, state, zipcode, category, parking, username}) {
   return (
     <div>
-      <Container style={{ paddingTop: "20px", paddingBottom: "90px" }}>
+      <Container style={{ paddingTop: "30px", paddingBottom: "90px" }}>
         <Card mb-4 shadow>
           <div>
             <div style={{ paddingRight: "50px", clear: "both" }}>
