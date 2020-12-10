@@ -180,9 +180,9 @@ return(
     <div class="col-sm">
     <ul style={{ listStyle: "none", textAlign: 'left'}}>
       <li>Home</li>
+      <li>Places</li>
       <li>About Us</li>
       <li>Contact Us</li>
-      <li>Places</li>
     </ul>
     </div>
     <div class="col-sm" style={{textAlign: 'left'}}>
